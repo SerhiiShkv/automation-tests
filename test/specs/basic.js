@@ -77,6 +77,5 @@ describe("rozetka page", () => {
     expect(logged).toExist();
     //assert.strictEqual(logged.isExisting(), true);
     //browser.debug();
-    const e;
   });
 });
