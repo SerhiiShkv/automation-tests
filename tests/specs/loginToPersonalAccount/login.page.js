@@ -1,4 +1,4 @@
-import BasePage from "../../pageObjects/base.page";
+import BasePage from "../../pageobjects/base.page";
 
 class LoginPage extends BasePage {
   get personalAccountBtn() {
