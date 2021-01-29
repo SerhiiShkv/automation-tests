@@ -4,24 +4,73 @@ class LoginPage extends BasePage {
   get personalAccountBtn() {
     return $(".header-topline__user-link.button--link");
   }
-  get inputUsername() {
+  get inputEmailField() {
     return $("#auth_email");
   }
-  get inputPassword() {
+  get inputPasswordField() {
     return $("#auth_pass");
   }
   get submitBtn() {
     return $(".button--green.auth-modal__submit");
   }
-  get wrongPasswordMessage() {
+  get incorrectPasswordMessage() {
     return $(".form__hint_type_warning");
   }
+  get titleInPersonalAccount() {
+    return $("h3.modal__heading");
+  }
+  get errorMessage() {
+    return $(".error-message");
+  }
 
-  login(userEmail, password) {
-    clickElement({ element: this.personalAccountBtn });
-    fillElement({ element: this.inputUsername, value: userEmail });
-    fillElement({ element: this.inputPassword, value: password });
-    clickElement({ element: this.submitBtn });
+  loginToPersonalAccount({ email, password }) {
+    it("CLick on Personal Account button", () => {
+      clickElement({ element: this.personalAccountBtn });
+      expect(getElement({ element: this.titleInPersonalAccount })).toHaveText(
+        "Вхід"
+      );
+    });
+
+    it("Fill email address", () => {
+      fillElement({ element: this.inputEmailField, value: email });
+    });
+
+    it("Enter password", () => {
+      fillElement({ element: this.inputPasswordField, value: password });
+    });
+
+    it("Click submit button", () => {
+      clickElement({ element: this.submitBtn });
+    });
+  }
+
+  chooseCorrectErrorMessage({ userNotExists, wrongPassword, email }) {
+    browser.waitUntil(
+      () => userNotExists.isExisting() || wrongPassword.isExisting(),
+      {
+        timeout: 6000,
+        timeoutMsg: "Expected error message to be displayed",
+      }
+    );
+
+    if (userNotExists.isDisplayed()) {
+      expect(userNotExists).toHaveText(
+        `Користувач з логіном ${email} не зареєстрований`
+      );
+    } else if (wrongPassword.isDisplayed()) {
+      expect(wrongPassword).toHaveText(
+        "Введено невірний пароль!" +
+          "\n" +
+          "Перевірте розкладку клавіатури і Caps Lock" +
+          "\n" +
+          "Надішліть мені тимчасовий пароль на вказану адресу електронної пошти"
+      );
+    } else {
+      setTimeout(() => {
+        this.chooseCorrectErrorMessage({ userNotExists, wrongPassword, email });
+      }, 400);
+    }
   }
 }
+
 export { LoginPage };

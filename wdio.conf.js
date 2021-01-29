@@ -16,8 +16,6 @@ exports.config = {
     loginPass: ["./tests/specs/loginToPersonalAccount/login.success.spec.js"],
   },
 
-  maxInstances: 10,
-
   capabilities: [
     {
       maxInstances: 5,
@@ -26,20 +24,23 @@ exports.config = {
     },
   ],
 
-  logLevel: "info",
+  logLevel: "error",
   bail: 0,
   baseUrl: "https://rozetka.com.ua/ua/",
-  waitforTimeout: 10000,
+  waitforTimeout: 15000,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
   services: ["chromedriver"],
-  framework: "mocha",
+  framework: "jasmine",
   reporters: ["spec"],
 
-  mochaOpts: {
-    ui: "bdd",
-    timeout: 60000,
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 20000,
   },
+  // mochaOpts: {
+  //   ui: "bdd",
+  //   timeout: 60000,
+  // },
 
   beforeSession: () => {
     elementActions.elementActions();

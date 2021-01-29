@@ -18,18 +18,22 @@
     "@babel/node": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
     "@types/chai": "4.2.0",
     "@types/mocha": "5.2.7",
-    "@types/node": "^12.19.0",
-    "@wdio/cli": "^6.10.10",
-    "@wdio/local-runner": "^6.10.10",
-    "@wdio/mocha-framework": "^6.10.10",
-    "@wdio/spec-reporter": "^6.10.6",
-    "@wdio/sync": "^6.10.10",
+    "@types/node": "^12.19.15",
+    "@wdio/cli": "^6.12.1",
+    "@wdio/jasmine-framework": "^6.11.0",
+    "@wdio/local-runner": "^6.12.1",
+    "@wdio/mocha-framework": "^6.11.0",
+    "@wdio/spec-reporter": "^6.11.0",
+    "@wdio/sync": "^6.11.0",
     "chai": "*",
     "chromedriver": "^87.0.7",
+    "faker": "^5.2.0",
+    "jasmine": "^3.6.4",
+    "jasmine-core": "^3.6.0",
     "ts-node": "8.5.2",
     "typescript": "3.7.2",
     "wdio-chromedriver-service": "^6.0.4"
@@ -37,6 +41,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@babel/runtime-corejs3": "^7.12.5",
+    "@types/faker": "^5.1.5",
     "prettier": "^2.2.1"
   }
 }

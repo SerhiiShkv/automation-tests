@@ -1,10 +1,11 @@
 import { LoginPage } from "./login.page";
+import * as faker from "faker";
 
-const loginPage = new LoginPage(),
-  userEmail = "test@gmail.com",
-  password = "teststest";
+const loginPage = new LoginPage();
+let email = faker.internet.email(),
+  password = faker.internet.password();
 
-describe("Login invalid credentials", () => {
+describe("Login with invalid credentials", () => {
   it("Go to rozetka page", () => {
     getElement({
       element: loginPage.openMainPage(),
@@ -15,17 +16,22 @@ describe("Login invalid credentials", () => {
 
   it("Verify Personal Account button is displayed", () => {
     getElement({ element: loginPage.personalAccountBtn });
-    expect(loginPage.personalAccountBtn).toBeDisplayed();
+    expect(
+      getElement({ element: loginPage.personalAccountBtn })
+    ).toBeDisplayed();
   });
+});
 
-  it("Click on Personal Account button and login with invalid credentials", () => {
-    loginPage.login(userEmail, password);
-    expect(loginPage.wrongPasswordMessage).toHaveText(
-      "Введено невірний пароль!" +
-        "\n" +
-        "Перевірте розкладку клавіатури і Caps Lock" +
-        "\n" +
-        "Надішліть мені тимчасовий пароль на вказану адресу електронної пошти"
-    );
+describe("Login with invalid credentials", () => {
+  loginPage.loginToPersonalAccount({ email, password });
+});
+
+describe("Verify one of the error messages should be displayed", () => {
+  it("Verify error message is displayed", () => {
+    loginPage.chooseCorrectErrorMessage({
+      userNotExists: loginPage.errorMessage,
+      wrongPassword: loginPage.incorrectPasswordMessage,
+      email,
+    });
   });
 });
