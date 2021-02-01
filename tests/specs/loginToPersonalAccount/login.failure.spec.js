@@ -5,7 +5,7 @@ const loginPage = new LoginPage();
 let email = faker.internet.email(),
   password = faker.internet.password();
 
-describe("Login with invalid credentials", () => {
+describe("Open main page", () => {
   it("Go to rozetka page", () => {
     getElement({
       element: loginPage.openMainPage(),

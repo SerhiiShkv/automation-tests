@@ -2,7 +2,7 @@ class TimeOuts {
   timeOuts() {
     (function () {
       global.timeOuts = {
-        mini: 3000,
+        mini: 2000,
         small: 10000,
         average: 30000,
         large: 60000,

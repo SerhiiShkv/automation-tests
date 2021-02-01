@@ -22,6 +22,32 @@ class LoginPage extends BasePage {
   get errorMessage() {
     return $(".error-message");
   }
+  get loggedUserName() {
+    return $(".js-rz-auth .header-topline__user-link");
+  }
+  get loggedUserIcon() {
+    return $(".header-topline__user-link .header-topline__user-icon");
+  }
+
+  get headerDropDownOptions() {
+    return $$(".header-dropdown__list-item .header-dropdown__list-link")[0];
+  }
+
+  get listOfWishesTittle() {
+    return $(".cabinet-dummy .cabinet-dummy__heading");
+  }
+
+  get sidebarUserDetails() {
+    return $(".cabinet-user .cabinet-navigation__link");
+  }
+
+  get personalSectionElements() {
+    return $$(".personal-data__item .personal-data__value")[7];
+  }
+
+  get personalInfo() {
+    return $(".cabinet-content .cabinet__heading");
+  }
 
   loginToPersonalAccount({ email, password }) {
     it("CLick on Personal Account button", () => {
