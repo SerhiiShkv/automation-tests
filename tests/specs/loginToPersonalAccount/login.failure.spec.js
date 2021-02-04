@@ -6,13 +6,7 @@ let email = faker.internet.email(),
   password = faker.internet.password();
 
 describe("Open main page", () => {
-  it("Go to rozetka page", () => {
-    getElement({
-      element: loginPage.openMainPage(),
-      needWaitForElement: false,
-    });
-    expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
-  });
+  loginPage.openRozetkaHomePage({});
 
   it("Verify Personal Account button is displayed", () => {
     getElement({ element: loginPage.personalAccountBtn });

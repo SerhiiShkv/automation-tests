@@ -1,19 +1,17 @@
 import { LoginPage } from "./login.page";
-import { LogOut } from "../../pageobjects/logout.pga";
+import { LogOut } from "../../pageobjects/logout.page";
 
 const loginPage = new LoginPage(),
   logOut = new LogOut(),
-  userEmail = "test@email",
-  password = "testPassword";
+  userEmail = "test@mail.com",
+  password = "testPassword",
+  loggedUserName = "Вілл Сміт",
+  listOfWishesOption = "Списки бажань",
+  wishesTitle = "У вас ще немає списків бажань",
+  personalUserInfo = "Особисті дані";
 
 describe("Open the main page", () => {
-  it("Go to rozetka url page with custom window size", () => {
-    getElement({
-      element: loginPage.mainPageWithCustomWindowSize(),
-      needWaitForElement: false,
-    });
-    expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
-  });
+  loginPage.openRozetkaHomePage({ customSizePage: true, mainPage: false });
 
   it("Verify Personal Account button is displayed", () => {
     getElement({ element: loginPage.personalAccountBtn });
@@ -28,7 +26,7 @@ describe("Login with valid credentials", () => {
 
   it("Verify logged  User is displayed", () => {
     expect(getElement({ element: loginPage.loggedUserName })).toHaveText(
-      "Вілл Сміт"
+      loggedUserName
     );
   });
 
@@ -36,15 +34,15 @@ describe("Login with valid credentials", () => {
     clickElement({ element: loginPage.loggedUserIcon });
     expect(
       getElement({
-        element: loginPage.headerDropDownOptions,
+        element: loginPage.headerDropDownOptions[0],
       })
-    ).toHaveText("Списки бажань");
+    ).toHaveText(listOfWishesOption);
   });
 
   it("Click on List of wishes", () => {
-    clickElement({ element: loginPage.headerDropDownOptions });
+    clickElement({ element: loginPage.headerDropDownOptions[0] });
     expect(getElement({ element: loginPage.listOfWishesTittle })).toHaveText(
-      "У вас ще немає списків бажань"
+      wishesTitle
     );
   });
 
@@ -53,7 +51,7 @@ describe("Login with valid credentials", () => {
       element: loginPage.sidebarUserDetails,
     });
     expect(getElement({ element: loginPage.personalInfo })).toHaveText(
-      "Особисті дані"
+      personalUserInfo
     );
   });
 

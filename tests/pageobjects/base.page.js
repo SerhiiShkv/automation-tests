@@ -17,6 +17,10 @@ export default class BasePage {
     clickElement({ element: this.uaLang });
   }
 
+  changePositionOfCursor({ element }) {
+    element.moveTo();
+  }
+
   waitForLoadingElements({ timeout }) {
     browser.setTimeout({
       implicit: timeout,
@@ -28,5 +32,26 @@ export default class BasePage {
       timeout: timeOuts.mini,
       timeoutMsg: "Element is still not displayed",
     });
+  }
+
+  openRozetkaHomePage({ mainPage = true, customSizePage = false }) {
+    if (mainPage) {
+      it("Go to rozetka url page", () => {
+        getElement({
+          element: this.openMainPage(),
+          needWaitForElement: false,
+        });
+        expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
+      });
+    }
+    if (customSizePage) {
+      it("Go to rozetka url page with custom window size", () => {
+        getElement({
+          element: this.mainPageWithCustomWindowSize(),
+          needWaitForElement: false,
+        });
+        expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
+      });
+    }
   }
 }

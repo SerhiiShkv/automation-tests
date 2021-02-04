@@ -30,7 +30,7 @@ class LoginPage extends BasePage {
   }
 
   get headerDropDownOptions() {
-    return $$(".header-dropdown__list-item .header-dropdown__list-link")[0];
+    return $$(".header-dropdown__list-item .header-dropdown__list-link");
   }
 
   get listOfWishesTittle() {
