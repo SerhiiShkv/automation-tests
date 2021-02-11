@@ -15,6 +15,7 @@ exports.config = {
     loginFail: ["./tests/specs/loginToPersonalAccount/login.failure.spec.js"],
     loginPass: ["./tests/specs/loginToPersonalAccount/login.success.spec.js"],
     findPhone: ["./tests/specs/search/search.for.iphone.spec.js"],
+    wishList: ["./tests/specs/wishList/add.wishList.items.spec.js"],
   },
 
   capabilities: [

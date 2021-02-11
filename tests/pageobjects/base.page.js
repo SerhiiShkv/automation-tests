@@ -1,57 +1,55 @@
 export default class BasePage {
-  openMainPage() {
-    browser.url("/");
-  }
+	get headerBtns() {
+		return $$('.header-actions__component .header__button');
+	}
 
-  mainPageWithCustomWindowSize() {
-    browser.url("/");
-    browser.setWindowSize(1300, 850);
-  }
+	openMainPage() {
+		browser.url('/');
+	}
 
-  get uaLang() {
-    return $('[href="/ua/"]');
-  }
+	mainPageWithCustomWindowSize() {
+		browser.url('/');
+		browser.setWindowSize(1300, 850);
+	}
 
-  changeLanguage() {
-    this.openMainPage();
-    clickElement({ element: this.uaLang });
-  }
+	get uaLang() {
+		return $('[href="/ua/"]');
+	}
 
-  changePositionOfCursor({ element }) {
-    element.moveTo();
-  }
+	changeLanguage() {
+		this.openMainPage();
+		clickElement({ element: this.uaLang });
+	}
 
-  waitForLoadingElements({ timeout }) {
-    browser.setTimeout({
-      implicit: timeout,
-    });
-  }
+	changePositionOfCursor({ element }) {
+		element.moveTo();
+	}
 
-  waitUntilElementIsExisting({ element }) {
-    browser.waitUntil(() => element.isExisting(), {
-      timeout: timeOuts.mini,
-      timeoutMsg: "Element is still not displayed",
-    });
-  }
+	waitForLoadingElements({ timeout }) {
+		browser.setTimeout({
+			implicit: timeout,
+		});
+	}
 
-  openRozetkaHomePage({ mainPage = true, customSizePage = false }) {
-    if (mainPage) {
-      it("Go to rozetka url page", () => {
-        getElement({
-          element: this.openMainPage(),
-          needWaitForElement: false,
-        });
-        expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
-      });
-    }
-    if (customSizePage) {
-      it("Go to rozetka url page with custom window size", () => {
-        getElement({
-          element: this.mainPageWithCustomWindowSize(),
-          needWaitForElement: false,
-        });
-        expect(browser).toHaveUrl("https://rozetka.com.ua/ua/");
-      });
-    }
-  }
+	waitUntilElementIsExisting({ element }) {
+		browser.waitUntil(() => element.isExisting(), {
+			timeout: timeOuts.mini,
+			timeoutMsg: 'Element is still not displayed',
+		});
+	}
+
+	openRozetkaHomePage({ mainPage = true, customSizePage = false }) {
+		if (mainPage) {
+			it('Go to rozetka url page', () => {
+				this.openMainPage();
+				expect(browser).toHaveUrl('https://rozetka.com.ua/ua/');
+			});
+		}
+		if (customSizePage) {
+			it('Go to rozetka url page with custom window size', () => {
+				this.mainPageWithCustomWindowSize();
+				expect(browser).toHaveUrl('https://rozetka.com.ua/ua/');
+			});
+		}
+	}
 }
