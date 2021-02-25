@@ -3,18 +3,15 @@ import { LogOut } from '../../pageobjects/logout.page';
 
 const loginPage = new LoginPage(),
 	logOut = new LogOut(),
-	userEmail = 'test@mail.com',
+	userEmail = 'testMail',
 	password = 'testPassword',
 	loggedUserName = 'Вілл Сміт',
-	listOfWishesOption = 'Списки бажань',
-	wishesTitle = 'У вас ще немає списків бажань',
 	personalUserInfo = 'Особисті дані';
 
 describe('Open the main page', () => {
 	loginPage.openRozetkaHomePage({ customSizePage: true, mainPage: false });
 
 	it('Verify Personal Account button is displayed', () => {
-		getElement({ element: loginPage.personalAccountBtn });
 		expect(getElement({ element: loginPage.personalAccountBtn })).toBeDisplayed();
 	});
 });
@@ -25,26 +22,16 @@ describe('Login with valid credentials', () => {
 		password,
 		loggedUserName,
 	});
+});
 
+describe('Go to personal account', () => {
 	it('Click on logged User name', () => {
-		clickElement({ element: loginPage.wishListIcon });
+		clickElement({ element: loginPage.loggedUserName });
 		expect(
 			getElement({
-				element: loginPage.headerDropDownOptions[0],
+				element: loginPage.personalInfoTitle,
 			})
-		).toHaveText(listOfWishesOption);
-	});
-
-	it('Click on List of wishes', () => {
-		clickElement({ element: loginPage.headerDropDownOptions[0] });
-		expect(getElement({ element: loginPage.emptyListOfWishesTittle })).toHaveText(wishesTitle);
-	});
-
-	it('Click on User details in sidebar', () => {
-		clickElement({
-			element: loginPage.sidebarUserDetails,
-		});
-		expect(getElement({ element: loginPage.personalInfoTitle })).toHaveText(personalUserInfo);
+		).toHaveText(personalUserInfo);
 	});
 
 	it('Wait for loading all elements in personal account', () => {
@@ -53,11 +40,11 @@ describe('Login with valid credentials', () => {
 
 	it('Verify logged User email is displayed', () => {
 		loginPage.waitUntilElementIsExisting({
-			element: loginPage.personalSectionElements,
+			element: loginPage.personalSectionElements[7],
 		});
 		expect(
 			getElement({
-				element: loginPage.personalSectionElements,
+				element: loginPage.personalSectionElements[7],
 				needWaitForElement: false,
 			})
 		).toHaveText(userEmail);
@@ -65,5 +52,5 @@ describe('Login with valid credentials', () => {
 });
 
 describe('Logout form personal account', () => {
-	logOut.logOutFromPersonalAccount();
+	logOut.logOutFromPersonalAccount({});
 });

@@ -60,14 +60,13 @@ class WishList extends Search {
 		expect(getElement({ element: this.searchField, needWaitForElement: false })).toBeDisplayed();
 	}
 
-	searchAndAddProductsToWishList({ productOne, productTwo, productThree }) {
-		let product = [productOne, productTwo, productThree];
-		for (let item of product) {
-			describe(`Fill product name ${item} in the search field`, () => {
+	searchProductsThenAddOrClick({ products, addingWishList = false, index = 0 }) {
+		for (let elementOfArray of products) {
+			describe(`Fill product name ${elementOfArray} in the search field`, () => {
 				it(`Search for product`, () => {
 					fillElement({
 						element: this.searchField,
-						value: item,
+						value: elementOfArray,
 					});
 				});
 
@@ -80,10 +79,32 @@ class WishList extends Search {
 						})
 					).toBeDisplayed();
 				});
+				if (addingWishList) {
+					it('Add any product to the wish list', () => {
+						clickElement({ element: this.wishProductBtn[1] });
+					});
+				} else {
+					it('Click on product', () => {
+						clickElement({ element: this.searchingProductTitle[index] });
+						expect(getElement({ element: this.productTittle })).toHaveTextContaining(elementOfArray);
+					});
 
-				it('Add any product to the wish list', () => {
-					clickElement({ element: this.wishProductBtn[1] });
-				});
+					it('Move cursor to product tab', () => {
+						this.changePositionOfCursor({ element: this.productTabs[0] });
+					});
+
+					it('Click buy button', () => {
+						clickElement({ element: this.buyBtn });
+						for (let addedProducts of this.bagProductsTitle) {
+							expect(getElement({ element: addedProducts })).toHaveTextContaining(elementOfArray);
+						}
+					});
+
+					it('Click continue shopping button', () => {
+						clickElement({ element: this.continueShoppingBtn });
+						expect(getElement({ element: this.searchField })).toBeDisplayed();
+					});
+				}
 			});
 		}
 	}

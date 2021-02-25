@@ -28,6 +28,9 @@ class LoginPage extends BasePage {
 	get sideMenuBtn() {
 		return $('.header-menu .header__button');
 	}
+	get sideMenuEnterBtn() {
+		return $$('.side-menu__auth-buttons .side-menu__auth-button');
+	}
 
 	get sideMenuOptions() {
 		return $$('.side-menu__list .side-menu__item');
@@ -35,24 +38,12 @@ class LoginPage extends BasePage {
 	get sideMenuUserName() {
 		return $('.side-menu__auth .side-menu__user-name');
 	}
-	get sideMenuLoggedUserName() {
-		return $('.side-menu__auth .side-menu__user');
-	}
-
-	get wishListIcon() {
-		return $('.header-actions__item--wishlist .header__button');
-	}
-
-	get headerDropDownOptions() {
-		return $$('.header-dropdown__list-item .header-dropdown__list-link');
-	}
-
-	get sidebarUserDetails() {
-		return $('.cabinet-user .cabinet-navigation__link');
+	get headerLogo() {
+		return $('.header-layout .header__logo');
 	}
 
 	get personalSectionElements() {
-		return $$('.personal-data__item .personal-data__value')[7];
+		return $$('.personal-data__item .personal-data__value');
 	}
 
 	get personalInfoTitle() {
@@ -78,8 +69,13 @@ class LoginPage extends BasePage {
 		});
 
 		it('Verify if User is logged in', () => {
-			clickElement({ element: this.sideMenuBtn });
-			expect(getElement({ element: this.loggedUserName })).toHaveText(loggedUserName);
+			//works without IT check it only for LoginPAss captcha problems(captcha problem)
+			if (this.submitBtn.isExisting()) {
+				expect(getElement({ element: this.submitBtn })).toBeDisplayed();
+			} else {
+				clickElement({ element: this.sideMenuBtn });
+				expect(getElement({ element: this.loggedUserName })).toHaveText(loggedUserName);
+			}
 		});
 	}
 

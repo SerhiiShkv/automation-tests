@@ -41,10 +41,9 @@ describe('Verify wish list or delete recently added products if they added', () 
 });
 
 describe('Search for 3 different products and add them to the wish list', () => {
-	wishList.searchAndAddProductsToWishList({
-		productOne: sonyProduct,
-		productTwo: rowentaProduct,
-		productThree: xiaomiProduct,
+	wishList.searchProductsThenAddOrClick({
+		products: [sonyProduct, rowentaProduct, xiaomiProduct],
+		addingWishList: true,
 	});
 
 	describe('Verify that 3 recently added products are displayed near wish button', () => {
@@ -74,5 +73,5 @@ describe('Navigate to wish list and verify that 3 products are added', () => {
 });
 
 describe('Log out from personal account', () => {
-	wishList.logOutFromPersonalAccount();
+	wishList.logOutFromPersonalAccount({ allSteps: true });
 });

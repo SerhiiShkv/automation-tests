@@ -10,7 +10,7 @@ class Search extends LogOut {
 	}
 
 	get searchingProductTitle() {
-		return $('.goods-tile__heading .goods-tile__title');
+		return $$('.goods-tile__heading .goods-tile__title');
 	}
 
 	get searchingProducts() {
@@ -48,7 +48,9 @@ class Search extends LogOut {
 
 		it('Click find button', () => {
 			clickElement({ element: this.findBtn });
-			expect(getElement({ element: this.searchingProductTitle })).toHaveTextContaining(value);
+			for (let item of this.searchingProductTitle) {
+				expect(getElement({ element: item })).toHaveTextContaining(value);
+			}
 		});
 	}
 
