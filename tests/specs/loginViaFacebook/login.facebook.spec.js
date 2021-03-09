@@ -1,10 +1,6 @@
-import { LoginPage } from '../loginToPersonalAccount/login.page';
-import { LogOut } from '../../pageobjects/logout.page';
-import { FacebookLogin } from './facebook.page';
+import { BasePage } from '../../pageobjects/base.page';
 
-const facebookLogin = new FacebookLogin(),
-	loginPage = new LoginPage(),
-	logOut = new LogOut(),
+const basePage = new BasePage(),
 	userFacebookEmail = 'testMail',
 	userFacebookPassword = 'testPassword',
 	loggedUserName = 'Олег Мельник',
@@ -13,39 +9,35 @@ const facebookLogin = new FacebookLogin(),
 	userFirstName = 'Олег';
 
 describe('Open the main page', () => {
-	loginPage.openRozetkaHomePage({});
+	basePage.openRozetkaHomePage({});
 
 	it('Verify Personal Account button is displayed', () => {
-		expect(getElement({ element: loginPage.personalAccountBtn })).toBeDisplayed();
+		expect(getElement({ element: basePage.loginPage.personalAccountBtn })).toBeDisplayed();
 	});
 });
 
 describe('Login with valid credentials', () => {
-	facebookLogin.loginViaFacebook({
-		email: userFacebookEmail,
-		password: userFacebookPassword,
-		loggedUserName,
-	});
+	basePage.login({ type: 'facebook', email: userFacebookEmail, password: userFacebookPassword, loggedUserName });
 });
 
 describe('Navigate to personal data', () => {
 	it('Click on Logged User name', () => {
-		clickElement({ element: loginPage.loggedUserName });
+		clickElement({ element: basePage.loginPage.loggedUserName });
 		expect(
 			getElement({
-				element: loginPage.personalInfoTitle,
+				element: basePage.loginPage.personalInfoTitle,
 			})
 		).toHaveText(personalUserInfoTitle);
 	});
 
 	it('Wait for loading all elements in personal account', () => {
-		loginPage.waitForLoadingElements({ timeout: 200 });
+		basePage.waitForLoadingElements({ timeout: 200 });
 	});
 
 	it('Verify logged User Last Name is displayed', () => {
 		expect(
 			getElement({
-				element: loginPage.personalSectionElements[0],
+				element: basePage.loginPage.personalSectionElements[0],
 				needWaitForElement: false,
 			})
 		).toHaveText(userLastName);
@@ -54,7 +46,7 @@ describe('Navigate to personal data', () => {
 	it('Verify logged User First Name is displayed', () => {
 		expect(
 			getElement({
-				element: loginPage.personalSectionElements[1],
+				element: basePage.loginPage.personalSectionElements[1],
 				needWaitForElement: false,
 			})
 		).toHaveText(userFirstName);
@@ -62,5 +54,5 @@ describe('Navigate to personal data', () => {
 });
 
 describe('Logout form personal account', () => {
-	logOut.logOutFromPersonalAccount({ allSteps: false });
+	basePage.logOut.logOutFromPersonalAccount({ allSteps: false });
 });

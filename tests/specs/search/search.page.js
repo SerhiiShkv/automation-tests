@@ -1,6 +1,6 @@
-import { LogOut } from '../../pageobjects/logout.page';
+import { Core } from '../../core/core';
 
-class Search extends LogOut {
+export class Search extends Core {
 	get searchField() {
 		return $('.search-form__inner .search-form__input');
 	}
@@ -49,7 +49,11 @@ class Search extends LogOut {
 		it('Click find button', () => {
 			clickElement({ element: this.findBtn });
 			for (let item of this.searchingProductTitle) {
-				expect(getElement({ element: item })).toHaveTextContaining(value);
+				//revrite to find
+				if (item) {
+					expect(getElement({ element: item })).toHaveTextContaining(value);
+					break;
+				}
 			}
 		});
 	}
@@ -66,5 +70,3 @@ class Search extends LogOut {
 		}
 	}
 }
-
-export { Search };

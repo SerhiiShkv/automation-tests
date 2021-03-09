@@ -1,6 +1,6 @@
-import BasePage from '../../pageobjects/base.page';
+import { Core } from '../../core/core';
 
-class LoginPage extends BasePage {
+export class LoginPage extends Core {
 	get personalAccountBtn() {
 		return $('.header-actions__item--user .header__button');
 	}
@@ -69,7 +69,7 @@ class LoginPage extends BasePage {
 		});
 
 		it('Verify if User is logged in', () => {
-			//works without IT check it only for LoginPAss captcha problems(captcha problem)
+			//works without IT check it only for LoginPAss - can't check it because of captcha
 			if (this.submitBtn.isExisting()) {
 				expect(getElement({ element: this.submitBtn })).toBeDisplayed();
 			} else {
@@ -102,5 +102,3 @@ class LoginPage extends BasePage {
 		}
 	}
 }
-
-export { LoginPage };

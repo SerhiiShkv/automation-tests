@@ -14,16 +14,23 @@ exports.config = {
 	suites: {
 		loginFail: ['./tests/specs/loginToPersonalAccount/login.failure.spec.js'],
 		loginPass: ['./tests/specs/loginToPersonalAccount/login.success.spec.js'],
+		loginFacebook: ['./tests/specs/loginViaFacebook/login.facebook.spec.js'],
 		findPhone: ['./tests/specs/search/search.for.iphone.spec.js'],
 		wishList: ['./tests/specs/wishList/add.wishList.items.spec.js'],
 		shoppingBag: ['./tests/specs/shoppingBag/add.to.shopping.bag.spec.js'],
-		loginFacebook: ['./tests/specs/loginViaFacebook/login.facebook.spec.js'],
 	},
 
 	capabilities: [
 		{
 			maxInstances: 5,
 			browserName: 'chrome',
+			// 'goog:chromeOptions': {
+			// 	args: [
+			// 		'--disable-web-security',
+			// 		'--user-data-dir=~/Library/Application Support/Google/Chrome/Profile 1',
+			// 		'--allow-running-insecure-content',
+			// 	],
+			// },
 			acceptInsecureCerts: true,
 		},
 	],

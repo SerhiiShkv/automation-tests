@@ -1,8 +1,8 @@
-import { Bag } from './bag.page';
-import { LoginPage } from '../loginToPersonalAccount/login.page';
+import { BasePage } from '../../pageobjects/base.page';
+import { WishList } from '../wishList/wishList.page';
 
-const bag = new Bag(),
-	loginPage = new LoginPage(),
+const basePage = new BasePage(),
+	wishList = new WishList(),
 	lgProduct = 'LG OLED55C',
 	lgPrice = '51 999 ₴',
 	samsungProduct = 'Samsung QE85Q70',
@@ -10,26 +10,26 @@ const bag = new Bag(),
 	emptyBagTitle = 'Кошик порожній';
 
 describe('Open the main page', () => {
-	loginPage.openRozetkaHomePage({});
+	basePage.openRozetkaHomePage({});
 });
 
 describe('Find and add searching product to the bag', () => {
-	bag.searchProductsThenAddOrClick({ products: [lgProduct, samsungProduct] });
+	wishList.searchProductsThenAddOrClick({ products: [lgProduct, samsungProduct] });
 });
 
 describe('Navigate to home page', () => {
 	it('Click on home page', () => {
-		clickElement({ element: bag.headerLogo });
-		expect(getElement({ element: bag.bagCounter })).toHaveText('2');
+		clickElement({ element: basePage.loginPage.headerLogo });
+		expect(getElement({ element: basePage.bag.bagCounter })).toHaveText('2');
 	});
 });
 
 describe('Check if the bag contains recently added product', () => {
-	bag.openBagAndCheckAmountOfProducts({ newProducts: [lgProduct, samsungProduct] });
+	basePage.bag.openBagAndCheckAmountOfProducts({ newProducts: [lgProduct, samsungProduct] });
 });
 
 describe('Check that the product contains the title and price', () => {
-	bag.checkProductTitleAndPriceInBag({
+	basePage.bag.checkProductTitleAndPriceInBag({
 		products: [
 			{ title: lgProduct, price: lgPrice },
 			{ title: samsungProduct, price: samsungPrice },
@@ -40,21 +40,21 @@ describe('Check that the product contains the title and price', () => {
 describe('Remove recently added products from the bag', () => {
 	for (let i = 0; i < 2; i++) {
 		it('Click on three dots button in the bag', () => {
-			bag.waitUntilElementIsExisting({ element: bag.threeDotsBagBtn });
-			clickElement({ element: bag.threeDotsBagBtn });
-			expect(getElement({ element: bag.deleteThreeDotsBagBtn })).toBeDisplayed();
+			basePage.bag.waitUntilElementIsExisting({ element: basePage.bag.threeDotsBagBtn });
+			clickElement({ element: basePage.bag.threeDotsBagBtn });
+			expect(getElement({ element: basePage.bag.deleteThreeDotsBagBtn })).toBeDisplayed();
 		});
 
 		it('Click on delete button in the bag', () => {
-			clickElement({ element: bag.deleteThreeDotsBagBtn });
+			clickElement({ element: basePage.bag.deleteThreeDotsBagBtn });
 			if (i === 1) {
-				expect(getElement({ element: bag.emptyBagTitle })).toHaveText(emptyBagTitle);
+				expect(getElement({ element: basePage.bag.emptyBagTitle })).toHaveText(emptyBagTitle);
 			}
 		});
 	}
 
 	it('Click close button in the bag', () => {
-		clickElement({ element: bag.bagCloseBtn });
-		expect(getElement({ element: bag.headerLogo })).toBeDisplayed();
+		clickElement({ element: basePage.bag.bagCloseBtn });
+		expect(getElement({ element: basePage.loginPage.headerLogo })).toBeDisplayed();
 	});
 });

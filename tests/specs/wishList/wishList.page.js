@@ -1,6 +1,6 @@
-import { Search } from '../search/search.page';
+import { BasePage } from '../../pageobjects/base.page';
 
-class WishList extends Search {
+export class WishList extends BasePage {
 	get wishProductBtn() {
 		return $$('.wish-button.js-wish-button');
 	}
@@ -57,24 +57,24 @@ class WishList extends Search {
 			).toHaveText(listIsEmptyTitle);
 		}
 		clickElement({ element: this.goToMainPageBtn[1] });
-		expect(getElement({ element: this.searchField, needWaitForElement: false })).toBeDisplayed();
+		expect(getElement({ element: this.search.searchField, needWaitForElement: false })).toBeDisplayed();
 	}
 
-	searchProductsThenAddOrClick({ products, addingWishList = false, index = 0 }) {
+	searchProductsThenAddOrClick({ products, addingWishList = false }) {
 		for (let elementOfArray of products) {
 			describe(`Fill product name ${elementOfArray} in the search field`, () => {
 				it(`Search for product`, () => {
 					fillElement({
-						element: this.searchField,
+						element: this.search.searchField,
 						value: elementOfArray,
 					});
 				});
 
 				it('Click find button', () => {
-					clickElement({ element: this.findBtn });
+					clickElement({ element: this.search.findBtn });
 					expect(
 						getElement({
-							element: this.searchingProducts,
+							element: this.search.searchingProducts,
 							needWaitForElement: false,
 						})
 					).toBeDisplayed();
@@ -85,24 +85,27 @@ class WishList extends Search {
 					});
 				} else {
 					it('Click on product', () => {
-						clickElement({ element: this.searchingProductTitle[index] });
-						expect(getElement({ element: this.productTittle })).toHaveTextContaining(elementOfArray);
+						const product = this.search.searchingProductTitle.find((element) =>
+							element.getText().includes(elementOfArray)
+						);
+						clickElement({ element: product });
+						expect(getElement({ element: this.search.productTittle })).toHaveTextContaining(elementOfArray);
 					});
 
 					it('Move cursor to product tab', () => {
-						this.changePositionOfCursor({ element: this.productTabs[0] });
+						this.changePositionOfCursor({ element: this.search.productTabs[0] });
 					});
 
 					it('Click buy button', () => {
-						clickElement({ element: this.buyBtn });
-						for (let addedProducts of this.bagProductsTitle) {
+						clickElement({ element: this.bag.buyBtn });
+						for (let addedProducts of this.bag.bagProductsTitle) {
 							expect(getElement({ element: addedProducts })).toHaveTextContaining(elementOfArray);
 						}
 					});
 
 					it('Click continue shopping button', () => {
-						clickElement({ element: this.continueShoppingBtn });
-						expect(getElement({ element: this.searchField })).toBeDisplayed();
+						clickElement({ element: this.bag.continueShoppingBtn });
+						expect(getElement({ element: this.search.searchField })).toBeDisplayed();
 					});
 				}
 			});
@@ -125,5 +128,3 @@ class WishList extends Search {
 		});
 	}
 }
-
-export { WishList };

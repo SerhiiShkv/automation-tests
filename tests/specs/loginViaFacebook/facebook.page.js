@@ -1,6 +1,6 @@
-import { Bag } from '../shoppingBag/bag.page';
+import { LoginPage } from '../loginToPersonalAccount/login.page';
 
-class FacebookLogin extends Bag {
+export class FacebookLogin extends LoginPage {
 	get facebookBtn() {
 		return $('.auth-modal__social .auth-modal__social-button_type_facebook');
 	}
@@ -54,5 +54,3 @@ class FacebookLogin extends Bag {
 		});
 	}
 }
-
-export { FacebookLogin };

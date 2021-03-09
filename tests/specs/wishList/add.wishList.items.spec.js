@@ -1,8 +1,6 @@
 import { WishList } from './wishList.page';
-import { LoginPage } from '../loginToPersonalAccount/login.page';
 
 const wishList = new WishList(),
-	loginPage = new LoginPage(),
 	userEmail = 'test@mail.com',
 	password = 'testPassword',
 	loggedUserName = 'Вілл Сміт',
@@ -17,7 +15,7 @@ describe('Open the main page', () => {
 });
 
 describe('Login with valid credentials', () => {
-	loginPage.loginToPersonalAccount({
+	wishList.login({
 		email: userEmail,
 		password,
 		loggedUserName,
@@ -34,14 +32,14 @@ describe('Go to wish list', () => {
 describe('Verify wish list or delete recently added products if they added', () => {
 	it('Check wish list for added products', () => {
 		wishList.checkIfWishListEmpty({
-			notEmptyWishes: wishList.searchingProductTitle,
+			notEmptyWishes: wishList.search.searchingProductTitle,
 			listIsEmptyTitle: fillListProductsTitle,
 		});
 	});
 });
 
 describe('Search for 3 different products and add them to the wish list', () => {
-	wishList.searchProductsThenAddOrClick({
+	wishList.search.searchProductsThenAddOrClick({
 		products: [sonyProduct, rowentaProduct, xiaomiProduct],
 		addingWishList: true,
 	});
@@ -73,5 +71,5 @@ describe('Navigate to wish list and verify that 3 products are added', () => {
 });
 
 describe('Log out from personal account', () => {
-	wishList.logOutFromPersonalAccount({ allSteps: true });
+	wishList.logOut.logOutFromPersonalAccount({ allSteps: true });
 });

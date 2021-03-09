@@ -1,6 +1,6 @@
 import { LoginPage } from '../specs/loginToPersonalAccount/login.page';
 
-class LogOut extends LoginPage {
+export class LogOut extends LoginPage {
 	get accountActionBtns() {
 		return $$('.account-actions .button--medium');
 	}
@@ -41,5 +41,3 @@ class LogOut extends LoginPage {
 		});
 	}
 }
-
-export { LogOut };

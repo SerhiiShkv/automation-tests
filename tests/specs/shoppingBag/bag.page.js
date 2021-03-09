@@ -1,6 +1,6 @@
-import { WishList } from '../wishList/wishList.page';
+import { Core } from '../../core/core';
 
-class Bag extends WishList {
+export class Bag extends Core {
 	get buyOnProductBtn() {
 		return $$('.toOrder .goods-tile__buy-button');
 	}
@@ -104,5 +104,3 @@ class Bag extends WishList {
 		});
 	}
 }
-
-export { Bag };
