@@ -1,10 +1,10 @@
 export class Core {
 	openMainPage() {
-		browser.url('/');
+		browser.url('https://rozetka.com.ua/ua/');
 	}
 
 	mainPageWithCustomWindowSize() {
-		browser.url('/');
+		browser.url('https://rozetka.com.ua/ua/');
 		browser.setWindowSize(1300, 850);
 	}
 
@@ -20,7 +20,7 @@ export class Core {
 
 	waitUntilElementIsExisting({ element }) {
 		browser.waitUntil(() => element.isExisting(), {
-			timeout: timeOuts.mini,
+			timeout: timeouts.mini,
 			timeoutMsg: 'Element is still not displayed',
 		});
 	}

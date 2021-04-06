@@ -33,21 +33,16 @@ export class BasePage extends Core {
 
 	changeLanguage() {
 		this.openMainPage();
-		clickElement({ element: this.uaLang });
+		clickElement({ element: this.loginPage.sideMenuBtn });
+		clickElement({ element: this.uaLang, needWaitForElement: false });
 	}
 
 	openRozetkaHomePage({ mainPage = true, customSizePage = false }) {
 		if (mainPage) {
-			it('Go to rozetka url page', () => {
-				this.openMainPage();
-				expect(browser).toHaveUrl('https://rozetka.com.ua/ua/');
-			});
+			this.openMainPage();
 		}
 		if (customSizePage) {
-			it('Go to rozetka url page with custom window size', () => {
-				this.mainPageWithCustomWindowSize();
-				expect(browser).toHaveUrl('https://rozetka.com.ua/ua/');
-			});
+			this.mainPageWithCustomWindowSize();
 		}
 	}
 }

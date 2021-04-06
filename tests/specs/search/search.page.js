@@ -49,7 +49,7 @@ export class Search extends Core {
 		it('Click find button', () => {
 			clickElement({ element: this.findBtn });
 			for (let item of this.searchingProductTitle) {
-				//revrite to find
+				//rewrite to find
 				if (item) {
 					expect(getElement({ element: item })).toHaveTextContaining(value);
 					break;

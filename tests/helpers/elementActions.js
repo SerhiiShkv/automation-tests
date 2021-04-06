@@ -1,3 +1,5 @@
+// TODO delete after refactor
+
 class ElementActions {
 	elementActions() {
 		//(function () {
@@ -5,7 +7,7 @@ class ElementActions {
 			element,
 			needWaitForElement = true,
 			needScrollPage = false,
-			timeOut = timeOuts.mini,
+			timeOut = timeouts.mini,
 		}) => {
 			if (needWaitForElement) {
 				element.waitForDisplayed({ timeOut });
@@ -21,7 +23,7 @@ class ElementActions {
 			value,
 			needWaitForElement = true,
 			needClearField = false,
-			timeOut = timeOuts.small,
+			timeOut = timeouts.small,
 		}) => {
 			if (needWaitForElement) {
 				element.waitForDisplayed({ timeOut });
@@ -36,7 +38,7 @@ class ElementActions {
 			element,
 			needWaitForElement = true,
 			needScrollPage = false,
-			timeOut = timeOuts.small,
+			timeOut = timeouts.small,
 		}) => {
 			if (needWaitForElement) {
 				element.waitForDisplayed({ timeOut });

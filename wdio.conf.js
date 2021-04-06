@@ -5,8 +5,8 @@ require('@babel/register')({
 
 const { ElementActions } = require('./tests/helpers/elementActions.js');
 const elementActions = new ElementActions();
-const { TimeOuts } = require('./tests/helpers/timeOuts');
-const timeOuts = new TimeOuts();
+const elementCommands = require('./tests/helpers/element-commands');
+const { timeouts } = require('./tests/helpers/timeouts');
 
 exports.config = {
 	runner: 'local',
@@ -18,6 +18,7 @@ exports.config = {
 		findPhone: ['./tests/specs/search/search.for.iphone.spec.js'],
 		wishList: ['./tests/specs/wishList/add.wishList.items.spec.js'],
 		shoppingBag: ['./tests/specs/shoppingBag/add.to.shopping.bag.spec.js'],
+		filterChairs: ['./tests/specs/filterProduct/filter.product.spec.js'],
 	},
 
 	capabilities: [
@@ -53,8 +54,14 @@ exports.config = {
 	//   timeout: 60000,
 	// },
 
+	before: function (capabilities, specs) {
+		Object.keys(elementCommands).forEach((key) => {
+			browser.addCommand(key, elementCommands[key], true);
+		});
+	},
+
 	beforeSession: () => {
 		elementActions.elementActions();
-		timeOuts.timeOuts();
+		global.timeouts = timeouts;
 	},
 };

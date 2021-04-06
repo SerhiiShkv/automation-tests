@@ -31,7 +31,7 @@ export class LogOut extends LoginPage {
 
 		it('Click on side menu button', () => {
 			clickElement({ element: this.sideMenuBtn });
-			this.waitForLoadingElements({ timeout: timeOuts.mini });
+			this.waitForLoadingElements({ timeout: timeouts.mini });
 			expect(getElement({ element: this.sideMenuEnterBtn[0], needWaitForElement: false })).toHaveText('Вхід');
 		});
 

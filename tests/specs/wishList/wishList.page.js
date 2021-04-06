@@ -114,7 +114,7 @@ export class WishList extends BasePage {
 
 	checkExactNumbersOfProduct({ number }) {
 		it('Check if exact number of products are displayed in wish list', () => {
-			this.waitForLoadingElements({ timeout: timeOuts.mini });
+			this.waitForLoadingElements({ timeout: timeouts.mini });
 			let products = this.productsInWishList;
 			if (products.length === number) {
 				expect(products).toBeDisplayed();
