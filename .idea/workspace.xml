@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/helpers/element-commands.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/helpers/timeouts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/specs/filterProduct/filter.page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/specs/filterProduct/filter.product.spec.js" afterDir="false" />
+    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="Refactor element-commands, timeouts. Added filter.product.spec.js test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/helpers/elementActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/helpers/elementActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/helpers/timeOuts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/pageobjects/base.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/pageobjects/base.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/pageobjects/logout.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/pageobjects/logout.page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/specs/search/search.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/search/search.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wdio.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/wdio.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/specs/shoppingBag/add.to.shopping.bag.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/shoppingBag/add.to.shopping.bag.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/specs/shoppingBag/bag.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/shoppingBag/bag.page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +183,9 @@
       <workItem from="1617647142025" duration="4395000" />
       <workItem from="1617721203174" duration="1635000" />
       <workItem from="1617722849553" duration="78000" />
-      <workItem from="1617722961997" duration="3288000" />
+      <workItem from="1617722961997" duration="4116000" />
+      <workItem from="1617822740521" duration="703000" />
+      <workItem from="1617911310259" duration="13086000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1601968214356</created>
@@ -302,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615325684653</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refactor element-commands, timeouts. Added filter.product.spec.js test">
+      <created>1617742184750</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617742184750</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +316,8 @@
     <MESSAGE value="Wrote add to wish list products test" />
     <MESSAGE value="Wrote tests: add.wishList.items and login.facebook" />
     <MESSAGE value="Added core class and changed inheritance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added core class and changed inheritance" />
+    <MESSAGE value="Refactor element-commands, timeouts. Added filter.product.spec.js test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor element-commands, timeouts. Added filter.product.spec.js test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="324" y="33" width="1071" height="796" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617053607998">
@@ -363,11 +361,11 @@
       <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="466" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1615319499041" />
-    <state x="499" y="23" width="846" height="778" key="CommitChangelistDialog2" timestamp="1615325684393">
-      <screen x="0" y="23" width="1440" height="798" />
+    <state x="361" y="23" width="846" height="778" key="CommitChangelistDialog2" timestamp="1617742347803">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="499" y="23" key="CommitChangelistDialog2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1615325684393" />
-    <state x="361" y="23" key="CommitChangelistDialog2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1612470735843" />
+    <state x="361" y="23" key="CommitChangelistDialog2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742347803" />
     <state x="298" y="46" key="CommitChangelistDialog2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075275445" />
     <state x="499" y="23" key="CommitChangelistDialog2/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1614281833187" />
     <state x="144" y="136" key="DiffContextDialog" timestamp="1613075270856">
@@ -637,11 +635,11 @@
     <state x="203" y="67" key="SettingsEditor/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1612984149511" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1611860796914" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1611737952708" />
-    <state x="382" y="186" key="Vcs.Push.Dialog.v2" timestamp="1615325689716">
-      <screen x="0" y="23" width="1440" height="798" />
+    <state x="382" y="187" key="Vcs.Push.Dialog.v2" timestamp="1617742285135">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="382" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1615325689716" />
-    <state x="382" y="187" key="Vcs.Push.Dialog.v2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1612470741955" />
+    <state x="382" y="187" key="Vcs.Push.Dialog.v2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742285135" />
     <state x="382" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075281542" />
     <state x="382" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1614281838074" />
     <state x="418" y="177" width="604" height="492" key="find.popup" timestamp="1617741710177">
@@ -667,12 +665,12 @@
     <state x="1953" y="246" width="894" height="892" key="run.anything.popup/0.23.1440.801/1440.23.1920.1057@1440.23.1920.1057" timestamp="1616789079453" />
     <state x="385" y="193" width="671" height="681" key="run.anything.popup/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1617307847614" />
     <state x="385" y="208" width="670" height="740" key="run.anything.popup/0.23.1440.877/1440.23.1920.976@0.23.1440.877" timestamp="1612556852153" />
-    <state x="384" y="159" width="670" height="741" key="search.everywhere.popup" timestamp="1616534737193">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="384" y="148" width="670" height="676" key="search.everywhere.popup" timestamp="1617914608386">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="384" y="147" width="670" height="673" key="search.everywhere.popup/0.23.1440.796/1440.23.1920.1057@0.23.1440.796" timestamp="1614203377216" />
     <state x="384" y="148" width="670" height="674" key="search.everywhere.popup/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1613672079164" />
-    <state x="384" y="148" width="670" height="676" key="search.everywhere.popup/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1613080117830" />
+    <state x="384" y="148" width="670" height="676" key="search.everywhere.popup/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617914608386" />
     <state x="384" y="148" width="670" height="679" key="search.everywhere.popup/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613377264851" />
     <state x="384" y="148" width="670" height="681" key="search.everywhere.popup/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1611737421444" />
     <state x="384" y="150" width="670" height="690" key="search.everywhere.popup/0.23.1440.816/1440.23.1920.1057@0.23.1440.816" timestamp="1612813533500" />

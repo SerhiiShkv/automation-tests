@@ -69,4 +69,16 @@ export class Search extends Core {
 			}
 		}
 	}
+
+	/**
+	 *
+	 * @param {string} productName
+	 * @return {Element}
+	 */
+	getSearchingProduct(productName) {
+		this.searchField.fillElement({ value: productName });
+		this.findBtn.clickElement({});
+		this.waitForLoadingElements({ timeout: timeouts.small });
+		return this.searchingProductTitle.find((element) => element.getText().includes(productName));
+	}
 }
