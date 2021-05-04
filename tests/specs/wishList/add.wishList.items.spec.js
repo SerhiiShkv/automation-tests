@@ -1,9 +1,9 @@
 import { WishList } from './wishList.page';
 
 const wishList = new WishList(),
-	userEmail = 'test@mail.com',
-	password = 'testPassword',
-	loggedUserName = 'Вілл Сміт',
+	userEmail = 'legos1111@i.ua',
+	password = '771Bele',
+	loggedUserName = 'Олег Мельник',
 	wishesTitle = 'Список бажань',
 	fillListProductsTitle = 'Наповніть його товарами',
 	sonyProduct = 'Sony',
@@ -11,46 +11,65 @@ const wishList = new WishList(),
 	xiaomiProduct = 'Xiaomi';
 
 describe('Open the main page', () => {
-	wishList.openRozetkaHomePage({});
-});
+	it('Go to rozetka url page', () => {
+		wishList.openRozetkaHomePage({});
+		expect(browser).toHaveUrl('https://rozetka.com.ua/ua/');
+	});
 
-describe('Login with valid credentials', () => {
-	wishList.login({
-		email: userEmail,
-		password,
-		loggedUserName,
+	it('Login with valid credentials', () => {
+		wishList.login({
+			type: 'facebook',
+			email: userEmail,
+			password,
+		});
 	});
 });
 
 describe('Go to wish list', () => {
+	it('Verify logged User name', () => {
+		wishList.loginPage.sideMenuBtn.waitForClickable({ timeout: timeouts.small });
+		wishList.loginPage.sideMenuBtn.clickElement({});
+		expect(wishList.loginPage.loggedUserName.getElement({})).toHaveText(loggedUserName);
+	});
+
 	it('Click on List of Wishes option', () => {
-		clickElement({ element: wishList.sideMenuOptions[7] });
-		expect(getElement({ element: wishList.listOfWishesTitle })).toBeDisplayed();
+		wishList.waitForLoadingElements({ timeout: timeouts.large });
+		wishList.goToWishList();
+		expect(wishList.listOfWishesTitle.getElement({})).toBeDisplayed();
+	});
+
+	it('Check wish list for added products', () => {
+		wishList.checkIfWishListEmpty();
 	});
 });
 
 describe('Verify wish list or delete recently added products if they added', () => {
-	it('Check wish list for added products', () => {
-		wishList.checkIfWishListEmpty({
-			notEmptyWishes: wishList.search.searchingProductTitle,
-			listIsEmptyTitle: fillListProductsTitle,
-		});
+	// it('Check wish list for added products', () => {
+	// 	wishList.checkIfWishListEmpty();
+	// 	browser.pause(50000);
+	// });
+
+	it('Search for 3 different products and add then to the wish list', () => {
+		for (const product of [sonyProduct, rowentaProduct, xiaomiProduct]) {
+			wishList.addToWishList(product);
+		}
+		expect(getElement({ element: wishList.wishListAddedItem })).toHaveText('3');
 	});
 });
 
-describe('Search for 3 different products and add them to the wish list', () => {
-	wishList.search.searchProductsThenAddOrClick({
-		products: [sonyProduct, rowentaProduct, xiaomiProduct],
-		addingWishList: true,
-	});
-
-	describe('Verify that 3 recently added products are displayed near wish button', () => {
-		it('Verify wish button', () => {
-			expect(getElement({ element: wishList.wishListAddedItem })).toHaveText('3');
-		});
-	});
+describe('Search for 3 different products and add then to the wish list', () => {
+	// wishList.search.searchProductsThenAddOrClick({
+	// 	products: [sonyProduct, rowentaProduct, xiaomiProduct],
+	// 	addingWishList: true,
+	// });
+	// describe('Verify that 3 recently added products are displayed near wish button', () => {
+	// 	it('Verify wish button', () => {
+	//
+	// 	});
+	// });
 });
 
+/*
 describe('Navigate to wish list and verify that 3 products are added', () => {
 	it('Click on wish list button', () => {
 		clickElement({ element: wishList.headerBtns[1] });
@@ -73,3 +92,5 @@ describe('Navigate to wish list and verify that 3 products are added', () => {
 describe('Log out from personal account', () => {
 	wishList.logOut.logOutFromPersonalAccount({ allSteps: true });
 });
+
+ */

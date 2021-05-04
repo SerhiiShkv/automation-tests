@@ -18,10 +18,16 @@ export class Core {
 		});
 	}
 
-	waitUntilElementIsExisting({ element }) {
+	waitElementUntilExist({ element }) {
 		browser.waitUntil(() => element.isExisting(), {
-			timeout: timeouts.mini,
+			timeout: timeouts.large,
 			timeoutMsg: 'Element is still not displayed',
+		});
+	}
+
+	waitElementUntilClickable({ element, timeout = timeouts.large }) {
+		browser.waitUntil(() => element.isClickable(), {
+			timeout: timeout,
 		});
 	}
 }

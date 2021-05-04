@@ -2,7 +2,7 @@ import { BasePage } from '../../pageobjects/base.page';
 
 export class WishList extends BasePage {
 	get wishProductBtn() {
-		return $$('.wish-button.js-wish-button');
+		return $('.wish-button.js-wish-button');
 	}
 
 	get wishListAddedItem() {
@@ -11,6 +11,9 @@ export class WishList extends BasePage {
 
 	get checkBoxOfAddedProduct() {
 		return $$('.goods-tile__actions .tile-checkbox');
+	}
+	get checkBoxOfOneProduct() {
+		return $('.goods-tile__actions .tile-checkbox');
 	}
 
 	get emptyListOfWishesTittle() {
@@ -40,24 +43,26 @@ export class WishList extends BasePage {
 		return $('.wish-details__actions .js-check-all-goods');
 	}
 
-	checkIfWishListEmpty({ notEmptyWishes, listIsEmptyTitle }) {
-		if (notEmptyWishes.isDisplayed()) {
+	get wishListSideMenuOption() {
+		return $('[href="https://rozetka.com.ua/ua/cabinet/wishlist/"]');
+	}
+
+	get wishListDropDown() {
+		return $('.wish-details__actions.ng-star-inserted');
+	}
+
+	checkIfWishListEmpty() {
+		if (this.checkBoxOfOneProduct.isDisplayed()) {
 			let arrCheckBoxes = this.checkBoxOfAddedProduct;
 			for (let item of arrCheckBoxes) {
 				if (item.isDisplayed()) {
 					item.click();
 				}
 			}
-			clickElement({ element: this.wishListDeleteBtn });
-			expect(
-				getElement({
-					element: this.fillItWithProductsTitle,
-					needScrollPage: true,
-				})
-			).toHaveText(listIsEmptyTitle);
+			this.wishListDeleteBtn.clickElement({});
 		}
-		clickElement({ element: this.goToMainPageBtn[1] });
-		expect(getElement({ element: this.search.searchField, needWaitForElement: false })).toBeDisplayed();
+
+		this.goToMainPageBtn[1].clickElement({ needWaitForElement: true });
 	}
 
 	searchProductsThenAddOrClick({ products, addingWishList = false }) {
@@ -81,7 +86,7 @@ export class WishList extends BasePage {
 				});
 				if (addingWishList) {
 					it('Add any product to the wish list', () => {
-						clickElement({ element: this.wishProductBtn[1] });
+						clickElement({ element: finded.$('.wish-button.js-wish-button') });
 					});
 				} else {
 					it('Click on product', () => {
@@ -110,6 +115,51 @@ export class WishList extends BasePage {
 				}
 			});
 		}
+	}
+
+	addToWishList(product) {
+		const foundProduct = this.search.getSearchingProduct(product);
+		const wishIcon = foundProduct.$('.goods-tile .js-wish-button');
+		wishIcon.clickElement({});
+	}
+
+	goToWishList() {
+		const wishListOption = this.getSideMenuOptions('Списки бажань');
+		if (!wishListOption) {
+			const openOption = this.getSideMenuOptions('Розкрити');
+			this.waitElementUntilClickable({ element: openOption });
+			openOption.clickElement({});
+			const wishListOtherOption = this.getSideMenuOptions('Списки бажань');
+			this.waitElementUntilClickable({ element: wishListOtherOption });
+			wishListOtherOption.clickElement({});
+		} else {
+			wishListOption.clickElement({});
+		}
+
+		// console.log('this.loginPage.sideMenuOptions2 ------', this.loginPage.sideMenuOptions);
+		// const waitForOpenOption = new Promise((resolve) => {
+		// 	const openOption = this.getSideMenuOptions('Розкрити');
+		// 	resolve(openOption);
+		// });
+		// const waitForWishListOption = new Promise((resolve) => {
+		// 	const wishListOption = this.getSideMenuOptions('Списки бажань');
+		// 	resolve(wishListOption);
+		// });
+		//
+		// return waitForOpenOption
+		// 	.then((otherOption) => {
+		// 		otherOption.clickElement({});
+		// 	})
+		// 	.then(() => {
+		// 		return waitForWishListOption.then((wishList) => {
+		// 			wishList.clickElement({});
+		// 		});
+		// 	});
+	}
+
+	getSideMenuOptions(option) {
+		console.log(this.loginPage.sideMenuOptions.find((item) => item.getText().includes(option))?.getText());
+		return this.loginPage.sideMenuOptions.find((item) => item.getText().includes(option));
 	}
 
 	checkExactNumbersOfProduct({ number }) {

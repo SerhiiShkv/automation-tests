@@ -33,7 +33,7 @@ describe('Go to personal account', () => {
 	});
 
 	it('Verify logged User email is displayed', () => {
-		basePage.waitUntilElementIsExisting({
+		basePage.waitElementUntilExist({
 			element: basePage.loginPage.personalSectionElements[7],
 		});
 		expect(

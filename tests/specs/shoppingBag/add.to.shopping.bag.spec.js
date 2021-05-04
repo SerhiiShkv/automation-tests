@@ -23,12 +23,12 @@ describe('Find and add searching product to the bag', () => {
 	it('Find two products and them to the bag', () => {
 		for (const element of [lgProduct, samsungProduct]) {
 			const product = basePage.search.getSearchingProduct(element);
-			clickElement({ element: product });
+			product.clickElement({});
 			basePage.bag.changePositionOfCursor({ element: basePage.search.productTabs[0] });
-			clickElement({ element: basePage.bag.buyBtn });
+			basePage.bag.buyBtn.clickElement({});
 			const bagProduct = basePage.bag.getBagElement(element);
 			expect(bagProduct).toHaveTextContaining(element);
-			clickElement({ element: basePage.bag.continueShoppingBtn });
+			basePage.bag.continueShoppingBtn.clickElement({});
 		}
 	});
 });
@@ -70,7 +70,7 @@ describe('Check that the product contains the title and price', () => {
 describe('Remove recently added products from the bag', () => {
 	for (let i = 0; i < 2; i++) {
 		it('Click on three dots button in the bag', () => {
-			basePage.bag.waitUntilElementIsExisting({ element: basePage.bag.threeDotsBagBtn });
+			basePage.bag.waitElementUntilExist({ element: basePage.bag.threeDotsBagBtn });
 			basePage.bag.threeDotsBagBtn.clickElement({});
 			expect(basePage.bag.deleteThreeDotsBagBtn.getElement({})).toBeDisplayed();
 		});

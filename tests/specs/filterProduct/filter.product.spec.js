@@ -31,7 +31,7 @@ describe('Verify filter and Select two different models of chairs', () => {
 
 	it('Select searching products', () => {
 		for (const element of products) {
-			filter.waitUntilElementIsExisting({ element: $(`[for='${element}']`) });
+			filter.waitElementUntilExist({ element: $(`[for='${element}']`) });
 			const filterProductTitle = filter.checkboxProduct.find((item) => item.getText().includes(element));
 			expect(filterProductTitle.getElement({ needWaitForElement: false })).toBeDisplayed();
 			filterProductTitle.clickElement({});

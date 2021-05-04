@@ -19,38 +19,34 @@ export class FacebookLogin extends LoginPage {
 		return $('#loginbutton');
 	}
 
-	loginViaFacebook({ email, password, loggedUserName }) {
-		it('Click on Personal Account button', () => {
-			clickElement({ element: this.personalAccountBtn });
-			expect(getElement({ element: this.titleInPersonalAccount })).toHaveText('Вхід');
-		});
+	openFacebookWindow() {
+		this.personalAccountBtn.clickElement({});
+		this.facebookBtn.clickElement({});
+		browser.switchWindow('https://www.facebook.com/');
+	}
 
-		it('Click on Facebook button', () => {
-			clickElement({ element: this.facebookBtn });
-			browser.switchWindow('Facebook');
-			expect(getElement({ element: this.facebookTitle })).toHaveText('ROZETKA');
-		});
+	fillFacebookEmail(email) {
+		this.facebookEmailField.fillElement({ value: email });
+	}
 
-		it('Fill Facebook email address', () => {
-			fillElement({ element: this.facebookEmailField, value: email });
-		});
+	fillFacebookPassword(password) {
+		this.facebookPasswordField.fillElement({ value: password });
+	}
 
-		it('Enter Facebook password', () => {
-			fillElement({ element: this.facebookPasswordField, value: password });
-		});
+	submitFacebook() {
+		this.facebookLoginBtn.clickElement({});
+	}
 
-		it('Click Login button and Verify that logged User is displayed', () => {
-			clickElement({ element: this.facebookLoginBtn });
-			browser.switchWindow(
-				'Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого онлайн-гіпермаркету в Україні'
-			);
-			expect(getElement({ element: this.submitBtn })).toBeDisplayed();
-		});
+	closeFacebookWindow() {
+		browser.switchWindow('https://rozetka.com.ua/');
+	}
 
-		it('Verify logged User name', () => {
-			this.sideMenuBtn.waitForClickable({ timeout: 6000 });
-			clickElement({ element: this.sideMenuBtn });
-			expect(getElement({ element: this.loggedUserName })).toHaveText(loggedUserName);
-		});
+	loginViaFacebook({ email, password }) {
+		this.openFacebookWindow();
+		this.waitElementUntilExist({ element: this.facebookEmailField });
+		this.fillFacebookEmail(email);
+		this.fillFacebookPassword(password);
+		this.submitFacebook();
+		this.closeFacebookWindow();
 	}
 }

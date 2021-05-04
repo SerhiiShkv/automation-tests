@@ -25,7 +25,7 @@ export class BasePage extends Core {
 
 	login({ type, email, password, loggedUserName }) {
 		if (type === 'facebook') {
-			this.facebookLogin.loginViaFacebook({ email, password, loggedUserName });
+			this.facebookLogin.loginViaFacebook({ email, password });
 		} else {
 			this.loginPage.loginToPersonalAccount({ email, password, loggedUserName });
 		}

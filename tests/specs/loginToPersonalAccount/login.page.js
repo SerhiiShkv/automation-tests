@@ -33,7 +33,7 @@ export class LoginPage extends Core {
 	}
 
 	get sideMenuOptions() {
-		return $$('.side-menu__list .side-menu__item');
+		return $$('.button--large.side-menu__button');
 	}
 	get sideMenuUserName() {
 		return $('.side-menu__auth .side-menu__user-name');
