@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/pageobjects/base.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/pageobjects/base.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/filterProduct/filter.product.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/filterProduct/filter.product.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/loginToPersonalAccount/login.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/loginToPersonalAccount/login.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/loginToPersonalAccount/login.success.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/loginToPersonalAccount/login.success.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/loginViaFacebook/facebook.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/loginViaFacebook/facebook.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/search/search.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/search/search.page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/shoppingBag/add.to.shopping.bag.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/shoppingBag/add.to.shopping.bag.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/wishList/add.wishList.items.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/wishList/add.wishList.items.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +196,7 @@
       <workItem from="1619606284699" duration="95000" />
       <workItem from="1619636876803" duration="5053000" />
       <workItem from="1619642706210" duration="4620000" />
-      <workItem from="1620153898317" duration="3071000" />
+      <workItem from="1620153898317" duration="3925000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1601968214356</created>
@@ -327,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617999667248</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactor facebook.page.js test">
+      <created>1620158314280</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1620158314280</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +343,8 @@
     <MESSAGE value="Added core class and changed inheritance" />
     <MESSAGE value="Refactor element-commands, timeouts. Added filter.product.spec.js test" />
     <MESSAGE value="Refactor add.to.shopping.bag.spec.js test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor add.to.shopping.bag.spec.js test" />
+    <MESSAGE value="Refactor facebook.page.js test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor facebook.page.js test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="310" y="28" width="1071" height="796" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619552579318">
@@ -390,9 +388,10 @@
       <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="466" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1615319499041" />
-    <state x="461" y="23" width="846" height="778" key="CommitChangelistDialog2" timestamp="1617999666578">
-      <screen x="0" y="23" width="1440" height="798" />
+    <state x="461" y="23" width="846" height="778" key="CommitChangelistDialog2" timestamp="1620158313893">
+      <screen x="0" y="23" width="1440" height="796" />
     </state>
+    <state x="461" y="23" key="CommitChangelistDialog2/0.23.1440.796/1440.23.1920.1057@0.23.1440.796" timestamp="1620158313893" />
     <state x="461" y="23" key="CommitChangelistDialog2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1617999666578" />
     <state x="361" y="23" key="CommitChangelistDialog2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742347803" />
     <state x="298" y="46" key="CommitChangelistDialog2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075275445" />
@@ -664,9 +663,10 @@
     <state x="203" y="67" key="SettingsEditor/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1612984149511" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1611860796914" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1611737952708" />
-    <state x="382" y="186" key="Vcs.Push.Dialog.v2" timestamp="1617999673271">
-      <screen x="0" y="23" width="1440" height="798" />
+    <state x="382" y="186" key="Vcs.Push.Dialog.v2" timestamp="1620158316569">
+      <screen x="0" y="23" width="1440" height="796" />
     </state>
+    <state x="382" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.796/1440.23.1920.1057@0.23.1440.796" timestamp="1620158316569" />
     <state x="382" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1617999673271" />
     <state x="382" y="187" key="Vcs.Push.Dialog.v2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742285135" />
     <state x="382" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075281542" />

@@ -1,8 +1,8 @@
 import { WishList } from './wishList.page';
 
 const wishList = new WishList(),
-	userEmail = 'legos1111@i.ua',
-	password = '771Bele',
+	userEmail = 'test@test',
+	password = 'testPass',
 	loggedUserName = 'Олег Мельник',
 	wishesTitle = 'Список бажань',
 	fillListProductsTitle = 'Наповніть його товарами',
