@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="wip: wishList.page.js test">
-      <change beforePath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" afterDir="false" />
+    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620158314280</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="wip: wishList.page.js test">
+      <created>1620160480328</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1620160480328</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +353,8 @@
     <MESSAGE value="Refactor element-commands, timeouts. Added filter.product.spec.js test" />
     <MESSAGE value="Refactor add.to.shopping.bag.spec.js test" />
     <MESSAGE value="Refactor facebook.page.js test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor facebook.page.js test" />
+    <MESSAGE value="wip: wishList.page.js test" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip: wishList.page.js test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="310" y="28" width="1071" height="796" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619552579318">
@@ -388,18 +398,20 @@
       <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="466" y="283" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1615319499041" />
-    <state x="461" y="23" width="846" height="778" key="CommitChangelistDialog2" timestamp="1620158313893">
-      <screen x="0" y="23" width="1440" height="796" />
+    <state x="1900" y="149" width="846" height="778" key="CommitChangelistDialog2" timestamp="1620160479920">
+      <screen x="1440" y="23" width="1920" height="976" />
     </state>
     <state x="461" y="23" key="CommitChangelistDialog2/0.23.1440.796/1440.23.1920.1057@0.23.1440.796" timestamp="1620158313893" />
     <state x="461" y="23" key="CommitChangelistDialog2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1617999666578" />
     <state x="361" y="23" key="CommitChangelistDialog2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742347803" />
     <state x="298" y="46" key="CommitChangelistDialog2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075275445" />
     <state x="499" y="23" key="CommitChangelistDialog2/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1614281833187" />
-    <state x="144" y="136" key="DiffContextDialog" timestamp="1613075270856">
-      <screen x="0" y="23" width="1440" height="804" />
+    <state x="1900" y="149" key="CommitChangelistDialog2/0.23.1440.877/1440.23.1920.976@0.23.1440.877" timestamp="1620160479920" />
+    <state x="144" y="146" key="DiffContextDialog" timestamp="1620160636083">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="144" y="136" key="DiffContextDialog/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075270856" />
+    <state x="144" y="146" key="DiffContextDialog/0.23.1440.877/1440.23.1920.976@0.23.1440.877" timestamp="1620160636083" />
     <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1620157637452">
       <screen x="0" y="23" width="1440" height="796" />
     </state>
@@ -663,14 +675,15 @@
     <state x="203" y="67" key="SettingsEditor/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1612984149511" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1611860796914" />
     <state x="203" y="67" key="SettingsEditor/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1611737952708" />
-    <state x="382" y="186" key="Vcs.Push.Dialog.v2" timestamp="1620158316569">
-      <screen x="0" y="23" width="1440" height="796" />
+    <state x="382" y="203" key="Vcs.Push.Dialog.v2" timestamp="1620160748554">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="382" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.796/1440.23.1920.1057@0.23.1440.796" timestamp="1620158316569" />
     <state x="382" y="186" key="Vcs.Push.Dialog.v2/0.23.1440.798/1440.23.1920.1057@0.23.1440.798" timestamp="1617999673271" />
     <state x="382" y="187" key="Vcs.Push.Dialog.v2/0.23.1440.801/1440.23.1920.1057@0.23.1440.801" timestamp="1617742285135" />
     <state x="382" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.804/1440.23.1920.1057@0.23.1440.804" timestamp="1613075281542" />
     <state x="382" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.806/1440.23.1920.1057@0.23.1440.806" timestamp="1614281838074" />
+    <state x="382" y="203" key="Vcs.Push.Dialog.v2/0.23.1440.877/1440.23.1920.976@0.23.1440.877" timestamp="1620160748554" />
     <state x="100" y="123" width="1240" height="596" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1619124981572">
       <screen x="0" y="23" width="1440" height="798" />
     </state>
