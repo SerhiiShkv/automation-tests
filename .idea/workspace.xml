@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d8e6b19d-35aa-44e4-a1d6-1626b47b546f" name="Default Changelist" comment="wip: wishList.page.js test">
+      <change beforePath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/specs/wishList/wishList.page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

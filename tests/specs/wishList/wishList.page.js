@@ -155,6 +155,7 @@ export class WishList extends BasePage {
 		// 			wishList.clickElement({});
 		// 		});
 		// 	});
+		//
 	}
 
 	getSideMenuOptions(option) {
