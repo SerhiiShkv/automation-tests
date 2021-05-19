@@ -4,17 +4,12 @@ export class FacebookLogin extends LoginPage {
 	get facebookBtn() {
 		return $('.auth-modal__social .auth-modal__social-button_type_facebook');
 	}
-
-	get facebookTitle() {
-		return $('._50f7');
-	}
 	get facebookEmailField() {
 		return $('#email');
 	}
 	get facebookPasswordField() {
 		return $('#pass');
 	}
-
 	get facebookLoginBtn() {
 		return $('#loginbutton');
 	}

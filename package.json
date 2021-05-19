@@ -31,6 +31,7 @@
     "@wdio/sync": "^7.5.3",
     "chai": "^4.3.4",
     "chromedriver": "^90.0.0",
+    "dotenv": "^9.0.0",
     "faker": "^5.5.3",
     "jasmine": "^3.7.0",
     "jasmine-core": "^3.7.1",

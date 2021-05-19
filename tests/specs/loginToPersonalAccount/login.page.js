@@ -31,7 +31,9 @@ export class LoginPage extends Core {
 	get sideMenuEnterBtn() {
 		return $$('.side-menu__auth-buttons .side-menu__auth-button');
 	}
-
+	get sideMenuAuthoriseTitle() {
+		return $('.side-menu__user .side-menu__auth-caption');
+	}
 	get sideMenuOptions() {
 		return $$('.button--large.side-menu__button');
 	}
@@ -41,11 +43,9 @@ export class LoginPage extends Core {
 	get headerLogo() {
 		return $('.header-layout .header__logo');
 	}
-
 	get personalSectionElements() {
 		return $$('.personal-data__item .personal-data__value');
 	}
-
 	get personalInfoTitle() {
 		return $('.cabinet-content .cabinet__heading');
 	}

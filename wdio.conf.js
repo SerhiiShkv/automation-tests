@@ -3,6 +3,7 @@ require('@babel/register')({
 	plugins: ['@babel/plugin-transform-runtime'],
 });
 
+require('dotenv').config();
 const { ElementActions } = require('./tests/helpers/elementActions.js');
 const elementActions = new ElementActions();
 const elementCommands = require('./tests/helpers/element-commands');
@@ -46,7 +47,7 @@ exports.config = {
 	framework: 'jasmine',
 	reporters: ['spec'],
 
-	jasmineNodeOpts: {
+	jasmineOpts: {
 		defaultTimeoutInterval: 20000,
 	},
 	// mochaOpts: {

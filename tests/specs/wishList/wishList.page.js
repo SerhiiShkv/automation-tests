@@ -51,8 +51,8 @@ export class WishList extends BasePage {
 		return $('.wish-details__actions.ng-star-inserted');
 	}
 
-	checkIfWishListEmpty() {
-		if (this.checkBoxOfOneProduct.isDisplayed()) {
+	removeProductsFromWishList() {
+		if (this.checkAllInWishListBtn.isDisplayed()) {
 			let arrCheckBoxes = this.checkBoxOfAddedProduct;
 			for (let item of arrCheckBoxes) {
 				if (item.isDisplayed()) {
@@ -63,58 +63,6 @@ export class WishList extends BasePage {
 		}
 
 		this.goToMainPageBtn[1].clickElement({ needWaitForElement: true });
-	}
-
-	searchProductsThenAddOrClick({ products, addingWishList = false }) {
-		for (let elementOfArray of products) {
-			describe(`Fill product name ${elementOfArray} in the search field`, () => {
-				it(`Search for product`, () => {
-					fillElement({
-						element: this.search.searchField,
-						value: elementOfArray,
-					});
-				});
-
-				it('Click find button', () => {
-					clickElement({ element: this.search.findBtn });
-					expect(
-						getElement({
-							element: this.search.searchingProducts,
-							needWaitForElement: false,
-						})
-					).toBeDisplayed();
-				});
-				if (addingWishList) {
-					it('Add any product to the wish list', () => {
-						clickElement({ element: finded.$('.wish-button.js-wish-button') });
-					});
-				} else {
-					it('Click on product', () => {
-						const product = this.search.searchingProductTitle.find((element) =>
-							element.getText().includes(elementOfArray)
-						);
-						clickElement({ element: product });
-						expect(getElement({ element: this.search.productTittle })).toHaveTextContaining(elementOfArray);
-					});
-
-					it('Move cursor to product tab', () => {
-						this.changePositionOfCursor({ element: this.search.productTabs[0] });
-					});
-
-					it('Click buy button', () => {
-						clickElement({ element: this.bag.buyBtn });
-						for (let addedProducts of this.bag.bagProductsTitle) {
-							expect(getElement({ element: addedProducts })).toHaveTextContaining(elementOfArray);
-						}
-					});
-
-					it('Click continue shopping button', () => {
-						clickElement({ element: this.bag.continueShoppingBtn });
-						expect(getElement({ element: this.search.searchField })).toBeDisplayed();
-					});
-				}
-			});
-		}
 	}
 
 	addToWishList(product) {
@@ -129,53 +77,30 @@ export class WishList extends BasePage {
 			const openOption = this.getSideMenuOptions('Розкрити');
 			this.waitElementUntilClickable({ element: openOption });
 			openOption.clickElement({});
+			this.waitElementUntilExist({ element: this.loginPage.sideMenuOptions[7] });
 			const wishListOtherOption = this.getSideMenuOptions('Списки бажань');
 			this.waitElementUntilClickable({ element: wishListOtherOption });
 			wishListOtherOption.clickElement({});
 		} else {
 			wishListOption.clickElement({});
 		}
-
-		// console.log('this.loginPage.sideMenuOptions2 ------', this.loginPage.sideMenuOptions);
-		// const waitForOpenOption = new Promise((resolve) => {
-		// 	const openOption = this.getSideMenuOptions('Розкрити');
-		// 	resolve(openOption);
-		// });
-		// const waitForWishListOption = new Promise((resolve) => {
-		// 	const wishListOption = this.getSideMenuOptions('Списки бажань');
-		// 	resolve(wishListOption);
-		// });
-		//
-		// return waitForOpenOption
-		// 	.then((otherOption) => {
-		// 		otherOption.clickElement({});
-		// 	})
-		// 	.then(() => {
-		// 		return waitForWishListOption.then((wishList) => {
-		// 			wishList.clickElement({});
-		// 		});
-		// 	});
-		//
 	}
 
 	getSideMenuOptions(option) {
-		console.log(this.loginPage.sideMenuOptions.find((item) => item.getText().includes(option))?.getText());
 		return this.loginPage.sideMenuOptions.find((item) => item.getText().includes(option));
 	}
 
 	checkExactNumbersOfProduct({ number }) {
-		it('Check if exact number of products are displayed in wish list', () => {
-			this.waitForLoadingElements({ timeout: timeouts.mini });
-			let products = this.productsInWishList;
-			if (products.length === number) {
-				expect(products).toBeDisplayed();
-			} else {
-				throw new Error(
-					`Expected result: 3 products should be displayed in Wish List` +
-						`\n` +
-						`Actual result: ${number} products are displayed in Wish List`
-				);
-			}
-		});
+		this.waitForLoadingElements({ timeout: timeouts.mini });
+		let products = this.productsInWishList;
+		if (products.length === number) {
+			return products.length;
+		} else {
+			throw new Error(
+				`Expected result: 3 products should be displayed in Wish List` +
+					`\n` +
+					`Actual result: ${number} products are not displayed in Wish List`
+			);
+		}
 	}
 }

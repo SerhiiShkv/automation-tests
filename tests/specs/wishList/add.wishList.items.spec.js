@@ -1,11 +1,11 @@
 import { WishList } from './wishList.page';
 
 const wishList = new WishList(),
-	userEmail = 'test@test',
-	password = 'testPass',
+	userEmail = process.env.FACEBOOK_USER_NAME,
+	password = process.env.FACEBOOK_USER_PASSWORD,
 	loggedUserName = 'Олег Мельник',
 	wishesTitle = 'Список бажань',
-	fillListProductsTitle = 'Наповніть його товарами',
+	enterTitle = 'Вхід',
 	sonyProduct = 'Sony',
 	rowentaProduct = 'Rowenta',
 	xiaomiProduct = 'Xiaomi';
@@ -25,29 +25,21 @@ describe('Open the main page', () => {
 	});
 });
 
-describe('Go to wish list', () => {
+describe('Go to the Wish List and Verify it`s empty then Add 3 different products and Verify that products are added to the Wish List', () => {
 	it('Verify logged User name', () => {
 		wishList.loginPage.sideMenuBtn.waitForClickable({ timeout: timeouts.small });
 		wishList.loginPage.sideMenuBtn.clickElement({});
 		expect(wishList.loginPage.loggedUserName.getElement({})).toHaveText(loggedUserName);
 	});
 
-	it('Click on List of Wishes option', () => {
+	it('Click on List of Wishes option and check if it`s empty', () => {
 		wishList.waitForLoadingElements({ timeout: timeouts.large });
 		wishList.goToWishList();
+		wishList.changePositionOfCursor({ element: wishList.search.findBtn });
 		expect(wishList.listOfWishesTitle.getElement({})).toBeDisplayed();
+		expect(wishList.emptyListOfWishesTittle.getElement({})).toBeDisplayed();
+		wishList.goToMainPageBtn[1].clickElement({ needWaitForElement: false });
 	});
-
-	it('Check wish list for added products', () => {
-		wishList.checkIfWishListEmpty();
-	});
-});
-
-describe('Verify wish list or delete recently added products if they added', () => {
-	// it('Check wish list for added products', () => {
-	// 	wishList.checkIfWishListEmpty();
-	// 	browser.pause(50000);
-	// });
 
 	it('Search for 3 different products and add then to the wish list', () => {
 		for (const product of [sonyProduct, rowentaProduct, xiaomiProduct]) {
@@ -55,42 +47,27 @@ describe('Verify wish list or delete recently added products if they added', () 
 		}
 		expect(getElement({ element: wishList.wishListAddedItem })).toHaveText('3');
 	});
-});
 
-describe('Search for 3 different products and add then to the wish list', () => {
-	// wishList.search.searchProductsThenAddOrClick({
-	// 	products: [sonyProduct, rowentaProduct, xiaomiProduct],
-	// 	addingWishList: true,
-	// });
-	// describe('Verify that 3 recently added products are displayed near wish button', () => {
-	// 	it('Verify wish button', () => {
-	//
-	// 	});
-	// });
-});
-
-/*
-describe('Navigate to wish list and verify that 3 products are added', () => {
-	it('Click on wish list button', () => {
+	it('Click on wish list button and verify that 3 products are displayed', () => {
 		clickElement({ element: wishList.headerBtns[1] });
 		expect(getElement({ element: wishList.listOfWishesTitle })).toHaveText(wishesTitle);
+		const numberOfProduct = wishList.checkExactNumbersOfProduct({ number: 3 });
+		expect(numberOfProduct).toEqual(3);
 	});
 
-	wishList.checkExactNumbersOfProduct({ number: 3 });
-
-	it('Click on select all products in wish list', () => {
-		clickElement({ element: wishList.checkAllInWishListBtn });
-		expect(getElement({ element: wishList.wishListDeleteBtn })).toBeDisplayed();
-	});
-
-	it('Click delete button', () => {
-		clickElement({ element: wishList.wishListDeleteBtn });
-		expect(getElement({ element: wishList.emptyListOfWishesTittle })).toBeDisplayed();
+	it('Remove product from Wish List', () => {
+		wishList.removeProductsFromWishList();
 	});
 });
 
 describe('Log out from personal account', () => {
-	wishList.logOut.logOutFromPersonalAccount({ allSteps: true });
-});
+	it('Log out from Facebook account', () => {
+		wishList.logOut.logOutFromPersonalAccount({ allSteps: true });
 
- */
+		const isPersonalAccEnterTitle = wishList.loginPage.titleInPersonalAccount;
+		if (!isPersonalAccEnterTitle.isDisplayed()) {
+			wishList.loginPage.personalAccountBtn.clickElement({}); //check if clickElement works in async mode without 'if()'
+		}
+		expect(isPersonalAccEnterTitle).toHaveText(enterTitle);
+	});
+});
