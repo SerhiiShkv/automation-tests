@@ -1,58 +1,35 @@
 import { BasePage } from '../../pageobjects/base.page';
 
 const basePage = new BasePage(),
-	userFacebookEmail = 'testMail',
-	userFacebookPassword = 'testPassword',
-	loggedUserName = 'Олег Мельник',
+	userFacebookEmail = process.env.FACEBOOK_USER_NAME,
+	userFacebookPassword = process.env.FACEBOOK_USER_PASSWORD,
 	personalUserInfoTitle = 'Особисті дані',
 	userLastName = 'Мельник',
 	userFirstName = 'Олег';
 
-describe('Open the main page', () => {
-	basePage.openRozetkaHomePage({});
-
-	it('Verify Personal Account button is displayed', () => {
-		expect(getElement({ element: basePage.loginPage.personalAccountBtn })).toBeDisplayed();
-	});
-});
-
-describe('Login with valid credentials', () => {
-	basePage.login({ type: 'facebook', email: userFacebookEmail, password: userFacebookPassword, loggedUserName });
-});
-
-describe('Navigate to personal data', () => {
-	it('Click on Logged User name', () => {
-		clickElement({ element: basePage.loginPage.loggedUserName });
-		expect(
-			getElement({
-				element: basePage.loginPage.personalInfoTitle,
-			})
-		).toHaveText(personalUserInfoTitle);
+describe('Login to Facebook and Navigate to personal data', () => {
+	it('Login into Facebook with valid credentials', () => {
+		basePage.login({ type: 'facebook', email: userFacebookEmail, password: userFacebookPassword });
 	});
 
-	it('Wait for loading all elements in personal account', () => {
-		basePage.waitForLoadingElements({ timeout: 200 });
-	});
-
-	it('Verify logged User Last Name is displayed', () => {
-		expect(
-			getElement({
-				element: basePage.loginPage.personalSectionElements[0],
-				needWaitForElement: false,
-			})
-		).toHaveText(userLastName);
-	});
-
-	it('Verify logged User First Name is displayed', () => {
-		expect(
-			getElement({
-				element: basePage.loginPage.personalSectionElements[1],
-				needWaitForElement: false,
-			})
-		).toHaveText(userFirstName);
+	it('Click on Logged User name and Verify logged User Last Name and First Name is displayed', () => {
+		basePage.loginPage.sideMenuBtn.waitForClickable({ timeout: timeouts.small });
+		basePage.loginPage.sideMenuBtn.clickElement({});
+		basePage.loginPage.loggedUserName.waitForClickable({ timeout: timeouts.small });
+		basePage.loginPage.loggedUserName.clickElement({});
+		expect(basePage.loginPage.personalInfoTitle.getElement({})).toHaveText(personalUserInfoTitle);
+		basePage.waitForLoadingElements({ timeout: timeouts.small });
+		expect(basePage.loginPage.personalSectionElements[0].getElement({ needWaitForElement: false })).toHaveText(
+			userLastName
+		);
+		expect(basePage.loginPage.personalSectionElements[1].getElement({ needWaitForElement: false })).toHaveText(
+			userFirstName
+		);
 	});
 });
 
 describe('Logout form personal account', () => {
-	basePage.logOut.logOutFromPersonalAccount({ allSteps: false });
+	it('Log out from Facebook account', () => {
+		basePage.logOut.logOutFromPersonalAccount({ allSteps: false });
+	});
 });

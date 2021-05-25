@@ -1,3 +1,5 @@
+import { BasePage } from './tests/pageobjects/base.page';
+
 require('@babel/register')({
 	presets: [['@babel/preset-env']],
 	plugins: ['@babel/plugin-transform-runtime'],
@@ -8,6 +10,7 @@ const { ElementActions } = require('./tests/helpers/elementActions.js');
 const elementActions = new ElementActions();
 const elementCommands = require('./tests/helpers/element-commands');
 const { timeouts } = require('./tests/helpers/timeouts');
+const basePage = new BasePage();
 
 exports.config = {
 	runner: 'local',
@@ -64,5 +67,9 @@ exports.config = {
 	beforeSession: () => {
 		elementActions.elementActions();
 		global.timeouts = timeouts;
+	},
+
+	beforeSuite: function (suite) {
+		basePage.openRozetkaHomePage({});
 	},
 };
